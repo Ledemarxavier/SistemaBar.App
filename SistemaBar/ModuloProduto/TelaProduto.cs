@@ -48,6 +48,17 @@ public class TelaProduto : TelaBase<Produto>, ITela
             {
                 ApresentarMensagem("Digite um nome válido!", ConsoleColor.DarkYellow);
                 Console.Clear();
+                continue;
+            }
+
+            Produto[] produtos = repositorio.SelecionarRegistros();
+            bool nomeJaExiste = produtos.Any(p => p != null && p.Nome == nome);
+
+            if (nomeJaExiste)
+            {
+                ApresentarMensagem("Já existe um produto com esse nome!", ConsoleColor.Red);
+                nome = string.Empty;
+                Console.Clear();
             }
         }
 
