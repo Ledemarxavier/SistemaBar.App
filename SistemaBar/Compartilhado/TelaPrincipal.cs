@@ -12,6 +12,9 @@ public class TelaPrincipal
     private RepositorioMesa repositorioMesa;
     private TelaMesa telaMesa;
 
+    private RepositorioGarcom repositorioGarcom;
+    private TelaGarcom telaGarcom;
+
     private RepositorioProduto repositorioProduto;
     private TelaProduto telaProduto;
 
@@ -21,12 +24,12 @@ public class TelaPrincipal
     public TelaPrincipal()
     {
         repositorioMesa = new RepositorioMesa();
-
+        repositorioGarcom = new RepositorioGarcom();
         repositorioProduto = new RepositorioProduto();
         repositorioConta = new RepositorioConta();
 
         telaMesa = new TelaMesa(repositorioMesa);
-
+        telaGarcom = new TelaGarcom(repositorioGarcom);
         telaProduto = new TelaProduto(repositorioProduto);
     }
 
@@ -56,6 +59,9 @@ public class TelaPrincipal
     {
         if (opcaoEscolhida == '1')
             return telaMesa;
+
+        if (opcaoEscolhida == '2')
+            return telaGarcom;
 
         if (opcaoEscolhida == '3')
             return telaProduto;

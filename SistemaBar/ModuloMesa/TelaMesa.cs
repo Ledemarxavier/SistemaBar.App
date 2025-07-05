@@ -46,7 +46,6 @@ public class TelaMesa : TelaBase<Mesa>, ITela
     protected override Mesa ObterDados()
     {
         bool conseguiuConverterNumero = false;
-
         int numero = 0;
 
         while (!conseguiuConverterNumero)
@@ -58,11 +57,21 @@ public class TelaMesa : TelaBase<Mesa>, ITela
             {
                 ApresentarMensagem("Digite um número válido!", ConsoleColor.DarkYellow);
                 Console.Clear();
+                continue;
+            }
+
+            Mesa[] mesas = repositorio.SelecionarRegistros();
+            bool numeroJaExiste = mesas.Any(m => m != null && m.Numero == numero);
+
+            if (numeroJaExiste)
+            {
+                conseguiuConverterNumero = false;
+                ApresentarMensagem("Já existe uma mesa com esse número!", ConsoleColor.Red);
+                Console.Clear();
             }
         }
 
         bool conseguiuConverterCapacidade = false;
-
         int capacidade = 0;
 
         while (!conseguiuConverterCapacidade)
@@ -70,7 +79,7 @@ public class TelaMesa : TelaBase<Mesa>, ITela
             Console.Write("Digite a capacidade da mesa: ");
             conseguiuConverterCapacidade = int.TryParse(Console.ReadLine(), out capacidade);
 
-            if (!conseguiuConverterNumero)
+            if (!conseguiuConverterCapacidade)
             {
                 ApresentarMensagem("Digite um número válido!", ConsoleColor.DarkYellow);
                 Console.Clear();
