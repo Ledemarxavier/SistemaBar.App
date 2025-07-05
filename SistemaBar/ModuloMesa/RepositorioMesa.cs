@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SistemaBar.Compartilhado;
+using SistemaBar.ModuloMesa;
 
-namespace SistemaBar.ModuloMesa
-{
-    internal class RepositorioMesa
-    {
-    }
-}
+namespace SistemaBar.ModuloMesa;
+
+public class RepositorioMesa : RepositorioBase<Mesa>;

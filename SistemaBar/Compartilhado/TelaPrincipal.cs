@@ -1,5 +1,4 @@
-﻿using SistemaBar.Compartilhado;
-using SistemaBar.ModuloConta;
+﻿using SistemaBar.ModuloConta;
 using SistemaBar.ModuloGarcom;
 using SistemaBar.ModuloMesa;
 using SistemaBar.ModuloProduto;
@@ -13,9 +12,6 @@ public class TelaPrincipal
     private RepositorioMesa repositorioMesa;
     private TelaMesa telaMesa;
 
-    private RepositorioGarcom repositorioGarcom;
-    private TelaGarcom telaGarcom;
-
     private RepositorioProduto repositorioProduto;
     private TelaProduto telaProduto;
 
@@ -24,7 +20,12 @@ public class TelaPrincipal
 
     public TelaPrincipal()
     {
+        repositorioMesa = new RepositorioMesa();
+
         repositorioProduto = new RepositorioProduto();
+        repositorioConta = new RepositorioConta();
+
+        telaMesa = new TelaMesa(repositorioMesa);
 
         telaProduto = new TelaProduto(repositorioProduto);
     }
@@ -53,6 +54,9 @@ public class TelaPrincipal
 
     public ITela ObterTela()
     {
+        if (opcaoEscolhida == '1')
+            return telaMesa;
+
         if (opcaoEscolhida == '3')
             return telaProduto;
 

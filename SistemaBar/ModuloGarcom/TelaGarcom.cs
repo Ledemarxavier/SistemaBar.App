@@ -1,12 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using SistemaBar.Compartilhado;
 
-namespace SistemaBar.ModuloGarcom
-{
-    internal class TelaGarcom
-    {
-    }
-}
+namespace SistemaBar.ModuloGarcom;

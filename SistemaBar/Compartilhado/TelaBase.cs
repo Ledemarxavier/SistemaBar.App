@@ -1,6 +1,4 @@
-﻿using SistemaBar.Compartilhado;
-
-namespace SistemaBar.Compartilhado;
+﻿namespace SistemaBar.Compartilhado;
 
 public abstract class TelaBase<Tipo> where Tipo : EntidadeBase<Tipo>
 {
