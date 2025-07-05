@@ -1,12 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace SistemaBar.Compartilhado;
 
-namespace SistemaBar.Compartilhado
+public interface ITela
 {
-    internal class IntTela
-    {
-    }
+    char ApresentarMenu();
+
+    void CadastrarRegistro();
+
+    void EditarRegistro();
+
+    void ExcluirRegistro();
+
+    void VisualizarRegistros(bool exibirCabecalho);
 }
