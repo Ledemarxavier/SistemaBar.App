@@ -1,4 +1,5 @@
-﻿using SistemaBar.ModuloConta;
+﻿using SistemaBar.Compartilhado;
+using SistemaBar.ModuloConta;
 using SistemaBar.ModuloGarcom;
 using SistemaBar.ModuloMesa;
 using SistemaBar.ModuloProduto;
@@ -28,9 +29,16 @@ public class TelaPrincipal
         repositorioProduto = new RepositorioProduto();
         repositorioConta = new RepositorioConta();
 
-        telaMesa = new TelaMesa(repositorioMesa);
-        telaGarcom = new TelaGarcom(repositorioGarcom);
-        telaProduto = new TelaProduto(repositorioProduto);
+        telaMesa = new TelaMesa(repositorioMesa, repositorioConta);
+        telaGarcom = new TelaGarcom(repositorioGarcom, repositorioConta);
+        telaProduto = new TelaProduto(repositorioProduto, repositorioConta);
+
+        telaConta = new TelaConta(
+            repositorioConta,
+            repositorioProduto,
+            repositorioMesa,
+            repositorioGarcom
+        );
     }
 
     public void ApresentarMenuPrincipal()
@@ -65,6 +73,9 @@ public class TelaPrincipal
 
         if (opcaoEscolhida == '3')
             return telaProduto;
+
+        if (opcaoEscolhida == '4')
+            return telaConta;
 
         return null;
     }

@@ -1,12 +1,16 @@
 ﻿using SistemaBar.Compartilhado;
+using SistemaBar.ModuloConta;
 using SistemaBar.ModuloMesa;
 
 namespace SistemaBar.ModuloMesa;
 
 public class TelaMesa : TelaBase<Mesa>, ITela
 {
-    public TelaMesa(RepositorioMesa repositorioMesa) : base("Mesa", repositorioMesa)
+    private RepositorioConta repositorioConta;
+
+    public TelaMesa(RepositorioMesa repositorioMesa, RepositorioConta repositorioConta) : base("Mesa", repositorioMesa)
     {
+        this.repositorioConta = repositorioConta;
     }
 
     public override void VisualizarRegistros(bool exibirCabecalho)
@@ -87,5 +91,45 @@ public class TelaMesa : TelaBase<Mesa>, ITela
         }
 
         return new Mesa(numero, capacidade);
+    }
+
+    public override void ExcluirRegistro()
+    {
+        ExibirCabecalho();
+
+        Console.WriteLine($"Exclusão de Mesa");
+
+        Console.WriteLine();
+
+        VisualizarRegistros(false);
+
+        bool conseguiuConverterId = false;
+        int idSelecionado = 0;
+
+        while (!conseguiuConverterId)
+        {
+            Console.Write("Digite o ID da mesa que deseja excluir: ");
+            conseguiuConverterId = int.TryParse(Console.ReadLine(), out idSelecionado);
+
+            if (!conseguiuConverterId)
+                ApresentarMensagem("Digite um número válido!", ConsoleColor.DarkYellow);
+        }
+
+        Console.WriteLine();
+
+        Mesa mesaSelecionada = repositorio.SelecionarRegistroPorId(idSelecionado);
+
+        List<Conta> contas = repositorioConta.SelecionarContas();
+        bool mesaEmUso = contas.Any(conta => conta.Mesa.Id == mesaSelecionada.Id);
+
+        if (mesaEmUso)
+        {
+            ApresentarMensagem("Esta mesa está vinculada a uma conta e não pode ser excluída!", ConsoleColor.Red);
+            return;
+        }
+
+        repositorio.ExcluirRegistro(idSelecionado);
+
+        ApresentarMensagem($"Mesa excluída com sucesso!", ConsoleColor.Green);
     }
 }

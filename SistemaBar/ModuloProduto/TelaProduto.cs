@@ -1,11 +1,15 @@
 ﻿using SistemaBar.Compartilhado;
+using SistemaBar.ModuloConta;
 
 namespace SistemaBar.ModuloProduto;
 
 public class TelaProduto : TelaBase<Produto>, ITela
 {
-    public TelaProduto(RepositorioProduto repositorio) : base("Produto", repositorio)
+    private RepositorioConta repositorioConta;
+
+    public TelaProduto(RepositorioProduto repositorio, RepositorioConta repositorioConta) : base("Produto", repositorio)
     {
+        this.repositorioConta = repositorioConta;
     }
 
     public override void VisualizarRegistros(bool exibirCabecalho)
@@ -79,5 +83,47 @@ public class TelaProduto : TelaBase<Produto>, ITela
         }
 
         return new Produto(nome, valor);
+    }
+
+    public override void ExcluirRegistro()
+    {
+        ExibirCabecalho();
+
+        Console.WriteLine($"Exclusão de Produto");
+
+        Console.WriteLine();
+
+        VisualizarRegistros(false);
+
+        bool conseguiuConverterId = false;
+
+        int idSelecionado = 0;
+
+        while (!conseguiuConverterId)
+        {
+            Console.Write("Digite o ID do produto que deseja excluir po: ");
+            conseguiuConverterId = int.TryParse(Console.ReadLine(), out idSelecionado);
+
+            if (!conseguiuConverterId)
+                ApresentarMensagem("Digite um número válido!", ConsoleColor.DarkYellow);
+        }
+
+        Console.WriteLine();
+
+        Produto produtoSelecionado = repositorio.SelecionarRegistroPorId(idSelecionado);
+
+        List<Conta> contas = repositorioConta.SelecionarContas();
+        bool produtoEmUso = contas.Any(conta =>
+            conta.Pedidos.Any(p => p != null && p.Produto.Id == produtoSelecionado.Id));
+
+        if (produtoEmUso)
+        {
+            ApresentarMensagem("Este produto está vinculado a um pedido e não pode ser excluído!", ConsoleColor.Red);
+            return;
+        }
+
+        repositorio.ExcluirRegistro(idSelecionado);
+
+        ApresentarMensagem($"Produto excluído com sucesso!", ConsoleColor.Green);
     }
 }

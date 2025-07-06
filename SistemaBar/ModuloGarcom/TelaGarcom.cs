@@ -1,12 +1,16 @@
 ﻿using SistemaBar.Compartilhado;
+using SistemaBar.ModuloConta;
 using SistemaBar.ModuloGarcom;
 
 namespace SistemaBar.ModuloGarcom;
 
 public class TelaGarcom : TelaBase<Garcom>, ITela
 {
-    public TelaGarcom(RepositorioGarcom repositorio) : base("Garçom", repositorio)
+    private RepositorioConta repositorioConta;
+
+    public TelaGarcom(RepositorioGarcom repositorio, RepositorioConta repositorioConta) : base("Garçom", repositorio)
     {
+        this.repositorioConta = repositorioConta;
     }
 
     public override void VisualizarRegistros(bool exibirCabecalho)
@@ -78,5 +82,45 @@ public class TelaGarcom : TelaBase<Garcom>, ITela
         }
 
         return new Garcom(nome, cpf);
+    }
+
+    public override void ExcluirRegistro()
+    {
+        ExibirCabecalho();
+
+        Console.WriteLine("Exclusão de Garçom");
+
+        Console.WriteLine();
+
+        VisualizarRegistros(false);
+
+        bool conseguiuConverterId = false;
+        int idSelecionado = 0;
+
+        while (!conseguiuConverterId)
+        {
+            Console.Write("Digite o ID do garçom que deseja excluir: ");
+            conseguiuConverterId = int.TryParse(Console.ReadLine(), out idSelecionado);
+
+            if (!conseguiuConverterId)
+                ApresentarMensagem("Digite um número válido!", ConsoleColor.DarkYellow);
+        }
+
+        Console.WriteLine();
+
+        Garcom garcomSelecionado = repositorio.SelecionarRegistroPorId(idSelecionado);
+
+        List<Conta> contas = repositorioConta.SelecionarContas();
+        bool garcomEmUso = contas.Any(conta => conta.Garcom.Id == garcomSelecionado.Id);
+
+        if (garcomEmUso)
+        {
+            ApresentarMensagem("Este garçom está vinculado a uma conta e não pode ser excluído!", ConsoleColor.Red);
+            return;
+        }
+
+        repositorio.ExcluirRegistro(idSelecionado);
+
+        ApresentarMensagem("Garçom excluído com sucesso!", ConsoleColor.Green);
     }
 }
