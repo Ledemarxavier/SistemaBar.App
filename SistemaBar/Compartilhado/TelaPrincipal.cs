@@ -1,4 +1,8 @@
-﻿using SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Infraestrutura.Memoria.ModuloConta;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloGarcom;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloMesa;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloProduto;
+using SistemaBar.Compartilhado;
 using SistemaBar.ModuloConta;
 using SistemaBar.ModuloGarcom;
 using SistemaBar.ModuloMesa;

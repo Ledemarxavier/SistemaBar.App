@@ -1,4 +1,6 @@
-﻿namespace SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.Compartilhado;
+
+namespace SistemaBar.App.Infraestrutura.Memoria.Compartilhado;
 
 public abstract class RepositorioBase<Tipo> where Tipo : EntidadeBase<Tipo>
 {

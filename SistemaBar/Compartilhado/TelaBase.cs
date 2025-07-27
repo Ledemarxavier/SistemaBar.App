@@ -1,4 +1,7 @@
-﻿namespace SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.Compartilhado;
+using SistemaBar.App.Infraestrutura.Memoria.Compartilhado;
+
+namespace SistemaBar.Compartilhado;
 
 public abstract class TelaBase<Tipo> where Tipo : EntidadeBase<Tipo>
 {

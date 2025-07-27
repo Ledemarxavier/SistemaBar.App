@@ -1,4 +1,4 @@
-﻿namespace SistemaBar.Compartilhado;
+﻿namespace SistemaBar.App.Dominio.Compartilhado;
 
 public abstract class EntidadeBase<Tipo>
 {

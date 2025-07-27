@@ -1,8 +1,12 @@
-﻿using SistemaBar.Compartilhado;
-using SistemaBar.ModuloConta;
-using SistemaBar.ModuloGarcom;
-using SistemaBar.ModuloMesa;
-using SistemaBar.ModuloProduto;
+﻿using SistemaBar.App.Dominio.ModuloConta;
+using SistemaBar.App.Dominio.ModuloGarcom;
+using SistemaBar.App.Dominio.ModuloMesa;
+using SistemaBar.App.Dominio.ModuloProduto;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloConta;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloGarcom;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloMesa;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloProduto;
+using SistemaBar.Compartilhado;
 
 namespace SistemaBar.ModuloConta;
 

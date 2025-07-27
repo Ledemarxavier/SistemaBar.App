@@ -1,6 +1,9 @@
-﻿using SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.ModuloConta;
+using SistemaBar.App.Dominio.ModuloMesa;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloConta;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloMesa;
+using SistemaBar.Compartilhado;
 using SistemaBar.ModuloConta;
-using SistemaBar.ModuloMesa;
 
 namespace SistemaBar.ModuloMesa;
 

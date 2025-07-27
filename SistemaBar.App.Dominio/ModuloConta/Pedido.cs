@@ -1,6 +1,6 @@
-﻿using SistemaBar.ModuloProduto;
+﻿using SistemaBar.App.Dominio.ModuloProduto;
 
-namespace SistemaBar.ModuloConta;
+namespace SistemaBar.App.Dominio.ModuloConta;
 
 public class Pedido
 {

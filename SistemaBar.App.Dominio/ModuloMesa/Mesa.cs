@@ -1,6 +1,6 @@
-﻿using SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.Compartilhado;
 
-namespace SistemaBar.ModuloMesa;
+namespace SistemaBar.App.Dominio.ModuloMesa;
 
 public class Mesa : EntidadeBase<Mesa>
 {

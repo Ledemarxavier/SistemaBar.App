@@ -1,7 +1,7 @@
 ﻿using SistemaBar.Compartilhado;
 using SistemaBar.ModuloConta;
 
-namespace SistemaBar.App
+namespace SistemaBar
 {
     internal class Program
     {

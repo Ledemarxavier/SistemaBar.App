@@ -1,6 +1,6 @@
-﻿using SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.Compartilhado;
 
-namespace SistemaBar.ModuloProduto;
+namespace SistemaBar.App.Dominio.ModuloProduto;
 
 public class Produto : EntidadeBase<Produto>
 {

@@ -1,6 +1,6 @@
-﻿using SistemaBar.ModuloConta;
+﻿using SistemaBar.App.Dominio.ModuloConta;
 
-namespace SistemaBar.ModuloConta;
+namespace SistemaBar.App.Infraestrutura.Memoria.ModuloConta;
 
 public class RepositorioConta
 {

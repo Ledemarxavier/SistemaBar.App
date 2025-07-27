@@ -1,7 +1,7 @@
-﻿using SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.Compartilhado;
 using System.Text.RegularExpressions;
 
-namespace SistemaBar.ModuloGarcom;
+namespace SistemaBar.App.Dominio.ModuloGarcom;
 
 public class Garcom : EntidadeBase<Garcom>
 {

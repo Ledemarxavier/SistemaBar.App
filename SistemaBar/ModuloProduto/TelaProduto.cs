@@ -1,4 +1,8 @@
-﻿using SistemaBar.Compartilhado;
+﻿using SistemaBar.App.Dominio.ModuloConta;
+using SistemaBar.App.Dominio.ModuloProduto;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloConta;
+using SistemaBar.App.Infraestrutura.Memoria.ModuloProduto;
+using SistemaBar.Compartilhado;
 using SistemaBar.ModuloConta;
 
 namespace SistemaBar.ModuloProduto;

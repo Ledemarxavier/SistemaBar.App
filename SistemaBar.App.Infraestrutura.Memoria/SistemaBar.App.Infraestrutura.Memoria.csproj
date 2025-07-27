@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -9,7 +8,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SistemaBar.App.Dominio\SistemaBar.App.Dominio.csproj" />
-    <ProjectReference Include="..\SistemaBar.App.Infraestrutura.Memoria\SistemaBar.App.Infraestrutura.Memoria.csproj" />
   </ItemGroup>
 
 </Project>

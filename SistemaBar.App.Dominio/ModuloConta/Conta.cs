@@ -1,10 +1,9 @@
-﻿using SistemaBar.Compartilhado;
-using SistemaBar.ModuloConta;
-using SistemaBar.ModuloGarcom;
-using SistemaBar.ModuloMesa;
-using SistemaBar.ModuloProduto;
+﻿using SistemaBar.App.Dominio.Compartilhado;
+using SistemaBar.App.Dominio.ModuloGarcom;
+using SistemaBar.App.Dominio.ModuloMesa;
+using SistemaBar.App.Dominio.ModuloProduto;
 
-namespace SistemaBar.ModuloConta;
+namespace SistemaBar.App.Dominio.ModuloConta;
 
 public class Conta : EntidadeBase<Conta>
 {
