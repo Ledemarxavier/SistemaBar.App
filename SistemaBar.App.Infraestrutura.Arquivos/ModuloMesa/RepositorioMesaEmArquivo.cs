@@ -1,7 +1,7 @@
 ﻿using SistemaBar.App.Dominio.ModuloMesa;
 using SistemaBar.App.Infraestrutura.Arquivos.Compartilhado;
 
-namespace ControleDeBar.Infraestrutura.Arquivos.ModuloMesa;
+namespace SistemaBar.App.Infraestrutura.Arquivos.ModuloMesa;
 
 public class RepositorioMesaEmArquivo : RepositorioBaseEmArquivo<Mesa>
 {
