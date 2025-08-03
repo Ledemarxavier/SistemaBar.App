@@ -1,7 +1,7 @@
 ﻿using SistemaBar.App.Dominio.ModuloGarcom;
 using SistemaBar.App.Infraestrutura.Arquivos.Compartilhado;
 
-namespace SistemaBar.Infraestrutura.Arquivos.ModuloGarcom;
+namespace SistemaBar.App.Infraestrutura.Arquivos.ModuloGarcom;
 
 public class RepositorioGarcomEmArquivo : RepositorioBaseEmArquivo<Garcom>
 {
