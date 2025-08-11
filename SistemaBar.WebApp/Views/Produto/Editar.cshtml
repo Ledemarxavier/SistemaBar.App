@@ -1,11 +1,11 @@
-﻿﻿@{
-    ViewBag.Titulo = "Edição de Garçom";
+﻿@{
+    ViewBag.Titulo = "Edição de Produto";
 }
 
 @model EditarProdutoViewModel;
 
 <div class="row justify-content-center">
-    <form class="col-6" asp-action="Editar" method="post">
+    <form class="col-6" asp-action="Cadastrar" method="post">
         <div class="mb-3">
             <label asp-for="Nome" class="form-label">Nome</label>
             <input class="form-control" asp-for="Nome">
@@ -14,7 +14,7 @@
 
         <div class="mb-3">
             <label asp-for="Valor" class="form-label">Valor</label>
-            <input class="form-control" asp-for="Valor">
+            <input class="form-control" asp-for="Valor" type="number" min="0" step="0.01" pattern="^\d+(?:\,\d{1,2})?$">
             <span asp-validation-for="Valor" class="text-danger"></span>
         </div>
 
