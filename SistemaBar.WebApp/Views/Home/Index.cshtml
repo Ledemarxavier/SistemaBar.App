@@ -1,14 +1,26 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewBag.Titulo = "Página Inicial";
 }
+<div class="row g-5 justify-content-center mt-3">
+	<div class="col order-1 order-lg-0">
+		<h2 class="text-primary fs-1 fw-bold">Seja bem-vindo/a!</h2>
 
-<div class="container-fluid p-0">
-    
-    <div class="bg-dark text-white text-center d-flex flex-column justify-content-center align-items-center"
-         style="background-image: url('/images/bar-bg.jpg'); background-size: cover; background-position: center; height: 100vh;">
+		<p class="fs-4 mt-3">
+			Nossa aplicação oferece a melhor experiência de gerência digital de estabelecimentos da área de serviços.
+		</p>
 
-        <div class="bg-dark bg-opacity-50 p-5 rounded">
-            <h1 class="display-4 fw-bold">Bem-vindo ao Controle de Bar 🍺</h1>
-            <p class="lead">Gerencie mesas, garçons, produtos e contas de forma prática e eficiente.</p>
-        </div>
+		<p class="fs-4 mt-3">
+			Você tem a possibilidade de gerenciar os dados e status de mesas, garçons, produtos e contas, além de controlar os pedidos e fechamento de contas...
+		</p>
 
+		<p class="fs-4 mt-4 text-secondary-emphasis">Clique em uma das opções abaixo para prosseguir:</p>
+
+		<div class="d-grid d-lg-flex flex-wrap gap-2">
+			<a asp-controller="Mesa" asp-action="Index" class="btn btn-outline-primary fw-semibold px-5 rounded-3">Mesas</a>
+			<a asp-controller="Garcom" asp-action="Index" class="btn btn-outline-primary fw-semibold px-5 rounded-3">Garçons</a>
+			<a asp-controller="Produto" asp-action="Index" class="btn btn-outline-primary fw-semibold px-5 rounded-3">Produtos</a>
+			<a asp-controller="Conta" asp-action="Index" class="btn btn-outline-primary fw-semibold px-5 rounded-3">Contas</a>
+		</div>
+	</div>
+
+</div>
