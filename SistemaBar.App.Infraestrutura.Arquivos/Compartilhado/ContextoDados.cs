@@ -7,62 +7,66 @@ using System.Text.Json.Serialization;
 
 namespace SistemaBar.App.Infraestrutura.Arquivos.Compartilhado
 {
-    public class ContextoDados
-    {
-        public List<Mesa> Mesas { get; set; } = new List<Mesa>();
-        public List<Garcom> Garcons { get; set; } = new List<Garcom>();
-        public List<Produto> Produtos { get; set; } = new List<Produto>();
-        public List<Conta> Contas { get; set; } = new List<Conta>();
+	public class ContextoDados
+	{
+		public List<Mesa> Mesas { get; set; } = new List<Mesa>();
+		public List<Garcom> Garcons { get; set; } = new List<Garcom>();
+		public List<Produto> Produtos { get; set; } = new List<Produto>();
+		public List<Conta> Contas { get; set; } = new List<Conta>();
 
-        private string pastaArmazenamento = "C:\\temp";
-        private string arquivoArmazenamento = "dados-controle-bar.json";
+		private string pastaArmazenamento = Path.Combine(
+		 Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData),
+		 "SistemaBar"
+	 );
 
-        public ContextoDados()
-        { }
+		private string arquivoArmazenamento = "dados.json";
 
-        public ContextoDados(bool carregarDados) : this()
-        {
-            if (carregarDados)
-                Carregar();
-        }
+		public ContextoDados()
+		{ }
 
-        public void Salvar()
-        {
-            string caminhoCompleto = Path.Combine(pastaArmazenamento, arquivoArmazenamento);
+		public ContextoDados(bool carregarDados) : this()
+		{
+			if (carregarDados)
+				Carregar();
+		}
 
-            JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
-            jsonOptions.WriteIndented = true;
-            jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
+		public void Salvar()
+		{
+			string caminhoCompleto = Path.Combine(pastaArmazenamento, arquivoArmazenamento);
 
-            var jsonString = JsonSerializer.Serialize(this, jsonOptions);
+			JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
+			jsonOptions.WriteIndented = true;
+			jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
 
-            if (!Directory.Exists(pastaArmazenamento))
-                Directory.CreateDirectory(pastaArmazenamento);
+			var jsonString = JsonSerializer.Serialize(this, jsonOptions);
 
-            File.WriteAllText(caminhoCompleto, jsonString);
-        }
+			if (!Directory.Exists(pastaArmazenamento))
+				Directory.CreateDirectory(pastaArmazenamento);
 
-        public void Carregar()
-        {
-            string caminhoCompleto = Path.Combine(pastaArmazenamento, arquivoArmazenamento);
+			File.WriteAllText(caminhoCompleto, jsonString);
+		}
 
-            if (!File.Exists(caminhoCompleto)) return;
+		public void Carregar()
+		{
+			string caminhoCompleto = Path.Combine(pastaArmazenamento, arquivoArmazenamento);
 
-            string jsonString = File.ReadAllText(caminhoCompleto);
+			if (!File.Exists(caminhoCompleto)) return;
 
-            if (string.IsNullOrWhiteSpace(jsonString)) return;
+			string jsonString = File.ReadAllText(caminhoCompleto);
 
-            JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
-            jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
+			if (string.IsNullOrWhiteSpace(jsonString)) return;
 
-            ContextoDados? contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(jsonString, jsonOptions);
+			JsonSerializerOptions jsonOptions = new JsonSerializerOptions();
+			jsonOptions.ReferenceHandler = ReferenceHandler.Preserve;
 
-            if (contextoArmazenado == null) return;
+			ContextoDados? contextoArmazenado = JsonSerializer.Deserialize<ContextoDados>(jsonString, jsonOptions);
 
-            Mesas = contextoArmazenado.Mesas;
-            Garcons = contextoArmazenado.Garcons;
-            Produtos = contextoArmazenado.Produtos;
-            Contas = contextoArmazenado.Contas;
-        }
-    }
+			if (contextoArmazenado == null) return;
+
+			Mesas = contextoArmazenado.Mesas;
+			Garcons = contextoArmazenado.Garcons;
+			Produtos = contextoArmazenado.Produtos;
+			Contas = contextoArmazenado.Contas;
+		}
+	}
 }
